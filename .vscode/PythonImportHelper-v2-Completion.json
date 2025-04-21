@@ -1,0 +1,233 @@
+[
+    {
+        "label": "Flask",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "render_template",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "pickle",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pickle",
+        "description": "pickle",
+        "detail": "pickle",
+        "documentation": {}
+    },
+    {
+        "label": "sqlite3",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sqlite3",
+        "description": "sqlite3",
+        "detail": "sqlite3",
+        "documentation": {}
+    },
+    {
+        "label": "logging",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "logging",
+        "description": "logging",
+        "detail": "logging",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "load_pickle_model",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def load_pickle_model(file_path):\n    with open(file_path, 'rb') as file:\n        return pickle.load(file)\n# Load models using pickle\nmodel = load_pickle_model('models/Heart_model.pkl')\nmodeldia = load_pickle_model('models/Diabetic_model.pkl')\n@app.route('/')\ndef index():\n    return render_template('home.html')\n@app.route('/heart')",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "index",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def index():\n    return render_template('home.html')\n@app.route('/heart')\ndef heart():\n    return render_template('heart.html')\n@app.route('/diabetes')\ndef diabetes():\n    return render_template('diabetes.html')\n@app.route('/output')\ndef output():",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "heart",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def heart():\n    return render_template('heart.html')\n@app.route('/diabetes')\ndef diabetes():\n    return render_template('diabetes.html')\n@app.route('/output')\ndef output():\n    return render_template('output.html')\ndef get_db_connection():\n    conn = sqlite3.connect('Database/HeartCare.db')",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "diabetes",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def diabetes():\n    return render_template('diabetes.html')\n@app.route('/output')\ndef output():\n    return render_template('output.html')\ndef get_db_connection():\n    conn = sqlite3.connect('Database/HeartCare.db')\n    conn.row_factory = sqlite3.Row\n    return conn\n@app.route('/submit_form', methods=['POST'])",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "output",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def output():\n    return render_template('output.html')\ndef get_db_connection():\n    conn = sqlite3.connect('Database/HeartCare.db')\n    conn.row_factory = sqlite3.Row\n    return conn\n@app.route('/submit_form', methods=['POST'])\ndef submit_form():\n    name = request.form['name']\n    email = request.form['email']",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "get_db_connection",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def get_db_connection():\n    conn = sqlite3.connect('Database/HeartCare.db')\n    conn.row_factory = sqlite3.Row\n    return conn\n@app.route('/submit_form', methods=['POST'])\ndef submit_form():\n    name = request.form['name']\n    email = request.form['email']\n    message = request.form['message']\n    try:",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "submit_form",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def submit_form():\n    name = request.form['name']\n    email = request.form['email']\n    message = request.form['message']\n    try:\n        conn = get_db_connection()\n        conn.execute('INSERT INTO submit_form (name, email, message) VALUES (?, ?, ?)', (name, email, message))\n        conn.commit()\n        conn.close()\n        logging.info(\"Contact form submitted successfully.\")",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "heart_predict",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def heart_predict():\n    try:\n        age = int(request.form['age'])\n        sex = int(request.form['sex'])\n        cp = int(request.form['cp'])\n        trestbps = int(request.form['trestbps'])\n        chol = int(request.form['chol'])\n        fbs = int(request.form['fbs'])\n        restecg = int(request.form['restecg'])\n        thalach = int(request.form['thalach'])",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "diabetes_predict",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def diabetes_predict():\n    try:\n        pregnancies = int(request.form['pregnancies'])\n        glucose = float(request.form['glucose'])\n        blood_pressure = int(request.form['blood_pressure'])\n        skin_thickness = float(request.form['skin_thickness'])\n        insulin = float(request.form['insulin'])\n        bmi = float(request.form['bmi'])\n        pedigree_function = float(request.form['pedigree_function'])\n        age = int(request.form['age'])",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "records",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def records():\n    try:\n        conn = get_db_connection()\n        contact_records = conn.execute('SELECT * FROM submit_form').fetchall()\n        heart_records = conn.execute('SELECT * FROM heart_disease_data').fetchall()\n        diabetes_records = conn.execute('SELECT * FROM diabetes_data').fetchall()\n        conn.close()\n        return render_template('records.html', contact_records=contact_records, heart_records=heart_records, diabetes_records=diabetes_records)\n    except Exception as e:\n        logging.error(f\"Error retrieving records: {e}\")",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "app = Flask(__name__)\n# Configure logging\nlogging.basicConfig(level=logging.DEBUG)\n# Function to load models using pickle\ndef load_pickle_model(file_path):\n    with open(file_path, 'rb') as file:\n        return pickle.load(file)\n# Load models using pickle\nmodel = load_pickle_model('models/Heart_model.pkl')\nmodeldia = load_pickle_model('models/Diabetic_model.pkl')",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "model",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "model = load_pickle_model('models/Heart_model.pkl')\nmodeldia = load_pickle_model('models/Diabetic_model.pkl')\n@app.route('/')\ndef index():\n    return render_template('home.html')\n@app.route('/heart')\ndef heart():\n    return render_template('heart.html')\n@app.route('/diabetes')\ndef diabetes():",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "modeldia",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "modeldia = load_pickle_model('models/Diabetic_model.pkl')\n@app.route('/')\ndef index():\n    return render_template('home.html')\n@app.route('/heart')\ndef heart():\n    return render_template('heart.html')\n@app.route('/diabetes')\ndef diabetes():\n    return render_template('diabetes.html')",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "database_name",
+        "kind": 5,
+        "importPath": "database",
+        "description": "database",
+        "peekOfCode": "database_name = 'HeartCare.db'\nconn = sqlite3.connect(database_name)\ncursor = conn.cursor()\ncursor.execute('''\nCREATE TABLE submit_form (\n    id INTEGER PRIMARY KEY AUTOINCREMENT,\n    name TEXT NOT NULL,\n    email TEXT NOT NULL UNIQUE,\n    message TEXT NOT NULL)\n''')",
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "conn",
+        "kind": 5,
+        "importPath": "database",
+        "description": "database",
+        "peekOfCode": "conn = sqlite3.connect(database_name)\ncursor = conn.cursor()\ncursor.execute('''\nCREATE TABLE submit_form (\n    id INTEGER PRIMARY KEY AUTOINCREMENT,\n    name TEXT NOT NULL,\n    email TEXT NOT NULL UNIQUE,\n    message TEXT NOT NULL)\n''')\ncursor.execute('''",
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "cursor",
+        "kind": 5,
+        "importPath": "database",
+        "description": "database",
+        "peekOfCode": "cursor = conn.cursor()\ncursor.execute('''\nCREATE TABLE submit_form (\n    id INTEGER PRIMARY KEY AUTOINCREMENT,\n    name TEXT NOT NULL,\n    email TEXT NOT NULL UNIQUE,\n    message TEXT NOT NULL)\n''')\ncursor.execute('''\nCREATE TABLE heart_disease_data (",
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "get_db_connection",
+        "kind": 2,
+        "importPath": "fetch",
+        "description": "fetch",
+        "peekOfCode": "def get_db_connection():\n    conn = sqlite3.connect('HeartCare.db')\n    conn.row_factory = sqlite3.Row\n    return conn\ndef fetch_submissions():\n    try:\n        conn = get_db_connection()\n        cursor = conn.cursor()\n        cursor.execute('SELECT * FROM submit_form')\n        submissions = cursor.fetchall()",
+        "detail": "fetch",
+        "documentation": {}
+    },
+    {
+        "label": "fetch_submissions",
+        "kind": 2,
+        "importPath": "fetch",
+        "description": "fetch",
+        "peekOfCode": "def fetch_submissions():\n    try:\n        conn = get_db_connection()\n        cursor = conn.cursor()\n        cursor.execute('SELECT * FROM submit_form')\n        submissions = cursor.fetchall()\n        if submissions:\n            print(\"Submissions fetched successfully:\")\n            for submission in submissions:\n                print(f\"ID: {submission['id']}\")",
+        "detail": "fetch",
+        "documentation": {}
+    }
+]

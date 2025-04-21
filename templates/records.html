@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Care Centre</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+<style>
+    /* Inline CSS corrections for buttons */
+    .btn-primary {
+        padding: 10px 20px;
+        color: antiquewhite;
+        background-color: #e63946;
+        border: none;
+        border-radius: 4px;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: bold;
+        display: inline-block;
+    }
+
+    .btn-primary:hover {
+        background-color: #d62839;
+        text-decoration: none;
+    }
+
+    .container.text-center {
+        text-align: center;
+    }
+    table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .container {
+            width: 90%;
+            margin: 0 auto;
+        }
+</style>
+
+<body>
+    <header style="margin-top: -130px;">
+        <div class="logo" style="display: flex;">
+            <img src="/static/logo.jpg" alt="Heart Care Center Logo">
+            <h1>Heart Care Centre</h1>
+        </div>
+        <nav>
+            <ul  style="margin-left: 620px;">
+                <li><a href="/">Home</a></li>
+                <li><a href="/records">Records</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#about">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+   
+
+    <div class="container">
+        <main>
+            <section id="records" style="margin-top: 130px;">
+                <h1 class="welcome-heading" style="text-align: center;"><span style="color: rgb(255, 0, 0);">Heart Care Centre</span> Records</h1>
+                
+                <h2>Contact Records :</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Message</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for record in contact_records %}
+                        <tr>
+                            <td>{{ record['id'] }}</td>
+                            <td>{{ record['name'] }}</td>
+                            <td>{{ record['email'] }}</td>
+                            <td>{{ record['message'] }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+                <h2>Heart Disease Records :</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Age</th>
+                            <th>Sex</th>
+                            <th>Chest Pain Type</th>
+                            <th>Resting Blood Pressure</th>
+                            <th>Cholesterol</th>
+                            <th>Fasting Blood Sugar</th>
+                            <th>Resting ECG Results</th>
+                            <th>Max Heart Rate Achieved</th>
+                            <th>Exercise Induced Angina</th>
+                            <th>Depression Induced by Exercise</th>
+                            <th>Slope of Peak Exercise ST Segment</th>
+                            <th>Number of Major Vessels Colored by Fluoroscopy</th>
+                            <th>Thalassemia</th>
+                            <th>Prediction</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for record in heart_records %}
+                        <tr>
+                            <td>{{ record['age'] }}</td>
+                            <td>{{ record['sex'] }}</td>
+                            <td>{{ record['cp'] }}</td>
+                            <td>{{ record['trestbps'] }}</td>
+                            <td>{{ record['chol'] }}</td>
+                            <td>{{ record['fbs'] }}</td>
+                            <td>{{ record['restecg'] }}</td>
+                            <td>{{ record['thalach'] }}</td>
+                            <td>{{ record['exang'] }}</td>
+                            <td>{{ record['oldpeak'] }}</td>
+                            <td>{{ record['slope'] }}</td>
+                            <td>{{ record['ca'] }}</td>
+                            <td>{{ record['thal'] }}</td>
+                            <td>{{ record['Prediction'] }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+                <h2>Diabetes Records :</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Pregnancies</th>
+                            <th>Glucose</th>
+                            <th>Blood Pressure</th>
+                            <th>Skin Thickness</th>
+                            <th>Insulin</th>
+                            <th>BMI</th>
+                            <th>Diabetes Pedigree Function</th>
+                            <th>Age</th>
+                            <th>Prediction</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for record in diabetes_records %}
+                        <tr>
+                            <td>{{ record['Pregnancies'] }}</td>
+                            <td>{{ record['Glucose'] }}</td>
+                            <td>{{ record['BloodPressure'] }}</td>
+                            <td>{{ record['SkinThickness'] }}</td>
+                            <td>{{ record['Insulin'] }}</td>
+                            <td>{{ record['BMI'] }}</td>
+                            <td>{{ record['DiabetesPedigreeFunction'] }}</td>
+                            <td>{{ record['Age'] }}</td>
+                            <td>{{ record['Prediction'] }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+
+    <footer style="position: relative;">
+        <p style="color: #ddd;">&copy; 2024 Heart Care Center. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>
+<!-- heart@care -->
